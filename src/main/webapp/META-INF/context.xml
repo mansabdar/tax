@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/${context.path}">
+
+  <Resource auth="Container"
+        connectionCacheName="CXCACHE-${context.id}_${context.path}-${context.build}_${context.timestamp}"
+        url="jdbc:oracle:thin:@(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = ${context.host})(PORT = 1521))(LOAD_BALANCE = yes)(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = ${context.service})))"/>
+
+  <Resource name="jdbc/admin"
+        auth="Container"
+        connectionCacheName="CXCACHE1-${context.id}_${context.path}-${context.build}_${context.timestamp}"
+        url="jdbc:oracle:thin:@(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = ${context.host})(PORT = 1521))(LOAD_BALANCE = yes)(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = ${context.service})))"/>
+</Context>

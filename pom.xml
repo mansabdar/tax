@@ -39,6 +39,14 @@
                     </includes>
                 </resource>
                 <resource>
+                    <directory>src/main/webapp/META-INF</directory>
+                    <targetPath>META-INF</targetPath>
+                    <filtering>true</filtering>
+                    <includes>
+                        <include>**/context.xml</include>
+                    </includes>
+                </resource>
+                <resource>
                     <directory>target/classes</directory>
                     <targetPath>WEB-INF/classes</targetPath>
                 </resource>
@@ -49,28 +57,49 @@
    </build>
 
   <name>Tax Web Application</name>
-  <url>http://maven.apache.org</url>
+  <url>http://localhost:9090/tax/</url>
 
   <profiles>
     <profile>
         <id>DEV</id>
         <properties>
-            <default.OWM_LOGIN_URL>https://workflow-dev2.onesourcelogin.com/iwm/login.aspx</default.OWM_LOGIN_URL>
+            <default.LOGIN_URL>http://localhost:9090/tax/</default.LOGIN_URL>
             <webapp.version>1.0.0</webapp.version>
+            <context.id>dev</context.id>
+            <context.path>tax</context.path>
+            <context.build>1</context.build>
+            <context.timestamp>${maven.build.timestamp}</context.timestamp>
+            <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+            <context.host>devhost</context.host>
+            <context.service>devservice</context.service>
         </properties>
     </profile>
     <profile>
         <id>QA</id>
         <properties>
-            <default.OWM_LOGIN_URL>https://workflow-qa2.onesourcelogin.com/iwm/login.aspx</default.OWM_LOGIN_URL>
+            <default.LOGIN_URL>http://localhost-qa:9090/tax/</default.LOGIN_URL>
             <webapp.version>1.0.1</webapp.version>
+            <context.id>qa</context.id>
+            <context.path>tax</context.path>
+            <context.build>1</context.build>
+            <context.timestamp>${maven.build.timestamp}</context.timestamp>
+            <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+            <context.host>qahost</context.host>
+            <context.service>qaservice</context.service>  
         </properties>
     </profile>
     <profile>
         <id>PROD</id>
         <properties>
-            <default.OWM_LOGIN_URL>https://workflow-amer1.onesourcelogin.com/iwm/login.aspx</default.OWM_LOGIN_URL>
+            <default.LOGIN_URL>http://localhost-prod:9090/tax/</default.LOGIN_URL>
             <webapp.version>1.0.2</webapp.version>
+            <context.id>prod</context.id>
+            <context.path>tax</context.path>
+            <context.build>1</context.build>
+            <context.timestamp>${maven.build.timestamp}</context.timestamp>
+            <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+            <context.host>prodhost</context.host>
+            <context.service>prodservice</context.service>
         </properties>
     </profile>
    </profiles>
