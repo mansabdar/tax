@@ -17,9 +17,6 @@
 
   <build>   
 	<finalName>tax</finalName>
-    <filters>
-      <filter>src/main/webapp/WEB-INF/classes/default.properties</filter>
-    </filters>
     <resources>
         <resource>
             <directory>src/main/resources</directory>
@@ -32,19 +29,26 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>3.1.0</version>
         <configuration>
-          <webResources>
-            <resource>
-              <!-- this is relative to the pom.xml directory -->
-              <directory>target/classes</directory>
-              <targetPath>WEB-INF/classes</targetPath>
-            </resource>
-          </webResources>
+            <webResources>
+                <resource>
+                    <directory>src/main/webapp/WEB-INF</directory>
+                    <targetPath>WEB-INF</targetPath>
+                    <filtering>true</filtering>
+                    <includes>
+                        <include>**/web.xml</include>
+                    </includes>
+                </resource>
+                <resource>
+                    <directory>target/classes</directory>
+                    <targetPath>WEB-INF/classes</targetPath>
+                </resource>
+            </webResources>
         </configuration>
       </plugin>
     </plugins>
    </build>
 
-  <name>tax Maven Webapp</name>
+  <name>Tax Web Application</name>
   <url>http://maven.apache.org</url>
 
   <profiles>
@@ -52,18 +56,21 @@
         <id>DEV</id>
         <properties>
             <default.OWM_LOGIN_URL>https://workflow-dev2.onesourcelogin.com/iwm/login.aspx</default.OWM_LOGIN_URL>
+            <webapp.version>1.0.0</webapp.version>
         </properties>
     </profile>
     <profile>
         <id>QA</id>
         <properties>
             <default.OWM_LOGIN_URL>https://workflow-qa2.onesourcelogin.com/iwm/login.aspx</default.OWM_LOGIN_URL>
+            <webapp.version>1.0.1</webapp.version>
         </properties>
     </profile>
     <profile>
         <id>PROD</id>
         <properties>
             <default.OWM_LOGIN_URL>https://workflow-amer1.onesourcelogin.com/iwm/login.aspx</default.OWM_LOGIN_URL>
+            <webapp.version>1.0.2</webapp.version>
         </properties>
     </profile>
    </profiles>
