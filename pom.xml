@@ -1,12 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>com.companyname.finance</groupId>
   <artifactId>tax</artifactId>
-  <packaging>war</packaging>
   <version>1.0</version>
-  <name>tax Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+  <packaging>war</packaging>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -15,6 +14,28 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>   
+		<finalName>tax</finalName>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>2.3</version>
+            <configuration>
+                <encoding>UTF-8</encoding>
+            </configuration>
+        </plugin>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+   </build>
+
+  <name>tax Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
   <profiles>
     <profile>
         <id>DEV</id>
@@ -35,21 +56,4 @@
         </properties>
     </profile>
    </profiles>
-   <plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-resources-plugin</artifactId>
-		<version>2.3</version>
-		<configuration>
-			<encoding>UTF-8</encoding>
-		</configuration>
-    </plugin>
-	<build>   
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<finalName>tax</finalName>
-	</build>
 </project>
