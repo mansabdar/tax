@@ -4,7 +4,7 @@
   <groupId>com.companyname.finance</groupId>
   <artifactId>tax</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <name>tax Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -15,7 +15,41 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <build>
-    <finalName>tax</finalName>
-  </build>
+  <profiles>
+    <profile>
+        <id>DEV</id>
+        <properties>
+            <default.OWM_LOGIN_URL>https://workflow-dev2.onesourcelogin.com/iwm/login.aspx</default.OWM_LOGIN_URL>
+        </properties>
+    </profile>
+    <profile>
+        <id>QA</id>
+        <properties>
+            <default.OWM_LOGIN_URL>https://workflow-qa2.onesourcelogin.com/iwm/login.aspx</default.OWM_LOGIN_URL>
+        </properties>
+    </profile>
+    <profile>
+        <id>PROD</id>
+        <properties>
+            <default.OWM_LOGIN_URL>https://workflow-amer1.onesourcelogin.com/iwm/login.aspx</default.OWM_LOGIN_URL>
+        </properties>
+    </profile>
+   </profiles>
+   <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-resources-plugin</artifactId>
+		<version>2.3</version>
+		<configuration>
+			<encoding>UTF-8</encoding>
+		</configuration>
+    </plugin>
+	<build>   
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<finalName>tax</finalName>
+	</build>
 </project>
